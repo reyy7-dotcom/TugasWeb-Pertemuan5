@@ -1,5 +1,4 @@
-// Masukkan API key OpenWeatherMap di sini
-const API_KEY = "MASUKKAN_API_KEY_DISINI";
+const API_KEY = "";
 
 const CURRENT_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
 const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast";
