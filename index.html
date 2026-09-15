@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplikasi cuaca sederhana untuk melihat kondisi terkini dan prakiraan lima hari.">
+    <title>Weather. | Cuaca Terkini</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#main-content" aria-label="Weather, kembali ke konten utama">Weather<span>.</span></a>
+
+            <nav class="header-nav" aria-label="Navigasi utama">
+                <a class="history-link" href="#history-section">Riwayat</a>
+                <div class="unit-toggle" role="group" aria-label="Pilih satuan suhu">
+                    <button class="unit-button is-active" id="celsius-button" type="button" data-unit="C" aria-pressed="true">°C</button>
+                    <span aria-hidden="true">/</span>
+                    <button class="unit-button" id="fahrenheit-button" type="button" data-unit="F" aria-pressed="false">°F</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="search-section" aria-labelledby="page-title">
+            <div class="container search-layout">
+                <div class="intro-copy">
+                    <p class="section-label">Kondisi terkini dan prakiraan</p>
+                    <h1 id="page-title">Cuaca hari ini</h1>
+                    <p>Cari kota untuk melihat kondisi cuaca terkini.</p>
+                </div>
+
+                <form class="search-form" id="search-form" novalidate>
+                    <label for="city-input">Nama kota</label>
+                    <div class="search-controls">
+                        <input
+                            id="city-input"
+                            name="city"
+                            type="search"
+                            placeholder="Cari kota..."
+                            autocomplete="off"
+                            enterkeyhint="search"
+                            required
+                        >
+                        <button id="search-button" type="submit">Cari</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <div class="container content-stack">
+            <div class="status-message" id="status-message" role="status" aria-live="polite" hidden>
+                <strong id="status-title"></strong>
+                <span id="status-detail"></span>
+            </div>
+
+            <section class="loading-panel" id="loading-panel" aria-label="Sedang memuat data cuaca" hidden>
+                <div class="loading-copy">
+                    <span class="skeleton skeleton-short"></span>
+                    <span class="skeleton skeleton-temperature"></span>
+                    <span class="skeleton skeleton-medium"></span>
+                </div>
+                <div class="loading-visual" aria-hidden="true"></div>
+                <p>Mencari cuaca...</p>
+            </section>
+
+            <article class="weather-panel" id="weather-panel" aria-labelledby="location-name" hidden>
+                <div class="weather-summary">
+                    <div class="weather-location">
+                        <p class="weather-date" id="weather-date"></p>
+                        <h2 id="location-name"></h2>
+                    </div>
+
+                    <div class="temperature-block">
+                        <p class="current-temperature" id="current-temperature"></p>
+                        <p class="weather-description" id="weather-description"></p>
+                    </div>
+
+                    <dl class="weather-details">
+                        <div>
+                            <dt>Terasa seperti</dt>
+                            <dd id="feels-like"></dd>
+                        </div>
+                        <div>
+                            <dt>Kelembaban</dt>
+                            <dd id="humidity"></dd>
+                        </div>
+                        <div>
+                            <dt>Angin</dt>
+                            <dd id="wind-speed"></dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="weather-visual">
+                    <img id="weather-icon" src="" alt="" width="200" height="200">
+                    <p id="weather-visual-label"></p>
+                </div>
+            </article>
+
+            <section class="forecast-section" id="forecast-section" aria-labelledby="forecast-title" hidden>
+                <div class="section-heading">
+                    <h2 id="forecast-title">Prakiraan 5 hari</h2>
+                    <p>Pembaruan cuaca sekitar pukul 12.00.</p>
+                </div>
+                <div class="forecast-list" id="forecast-list"></div>
+            </section>
+
+            <section class="history-section" id="history-section" aria-labelledby="history-title">
+                <div class="history-heading">
+                    <div>
+                        <h2 id="history-title">Pencarian terakhir</h2>
+                        <p>Pilih kota untuk melihat cuacanya kembali.</p>
+                    </div>
+                    <button class="clear-history-button" id="clear-history-button" type="button" hidden>Hapus riwayat</button>
+                </div>
+                <div class="history-list" id="history-list"></div>
+                <p class="history-empty" id="history-empty">Riwayat pencarian akan muncul di sini.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Reyhan Anwaraji</p>
+            <p>Data cuaca disediakan oleh <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">OpenWeatherMap</a>.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
